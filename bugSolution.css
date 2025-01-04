@@ -1,0 +1,25 @@
+To resolve the issue, there are several approaches:
+
+**1. Adjust Selector Specificity:** Rethink your selectors to avoid the conflict. For example, if possible, use more general class names instead of relying on very specific IDs, like changing `#myElement .child` to another more appropriate selector. 
+
+**2. Use !important (With Caution):** As a last resort, the `!important` flag can override specificity but this approach should be used sparingly as it compromises CSS's natural cascading behavior and makes maintenance difficult.
+
+```css
+.container {
+  background-color: lightblue !important;
+}
+
+#myElement .child {
+  background-color: lightcoral;
+}
+
+#myElement {
+    width: 500px;
+}
+
+.child {
+  height: 100px;
+}
+```
+
+The `bugSolution.css` illustrates the `!important` approach, although it is often advised to reconsider the CSS structure instead. The best solution frequently involves revising selectors to align with the intended style hierarchy and avoid unnecessary specificity conflicts.

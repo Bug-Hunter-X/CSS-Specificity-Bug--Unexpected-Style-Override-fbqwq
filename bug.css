@@ -1,0 +1,21 @@
+The following CSS code snippet suffers from a subtle but critical error related to specificity and cascading.  The `.container` class styles are unexpectedly overridden by the more specific `#myElement .child` selector:
+
+```css
+.container {
+  background-color: lightblue;
+}
+
+#myElement .child {
+  background-color: lightcoral;
+}
+
+#myElement {
+    width: 500px;
+}
+
+.child {
+  height: 100px;
+}
+```
+
+In this case, even though `.container` appears earlier,  `#myElement .child` is more specific because it uses an ID selector (#myElement) in addition to a class selector (.child). This makes the background-color: lightcoral style applied to any `.child` element within an element with ID `myElement`, overriding the `background-color: lightblue`.
